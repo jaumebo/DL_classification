@@ -59,7 +59,7 @@ create_environment:
 ifeq (True,$(HAS_CONDA))
 		@echo ">>> Detected conda, creating conda environment."
 ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
-	conda create --name $(PROJECT_NAME) python=3
+	conda create --name $(PROJECT_NAME) python=3.7
 else
 	conda create --name $(PROJECT_NAME) python=2.7
 endif
@@ -75,6 +75,10 @@ endif
 ## Test python environment is setup correctly
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
+
+## Test train model
+train_model:
+	$(PYTHON_INTERPRETER) src/models/train_model.py
 
 #################################################################################
 # PROJECT RULES                                                                 #
